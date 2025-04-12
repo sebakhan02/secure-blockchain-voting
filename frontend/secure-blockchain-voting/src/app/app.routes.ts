@@ -3,6 +3,7 @@ import { LandingpageComponent } from './pages/landingpage/landingpage.component'
 import { SignuppageComponent } from './pages/signuppage/signuppage.component';
 import { SigninpageComponent } from './pages/signinpage/signinpage.component';
 import { AuthenticationComponent } from './pages/authentication/authentication.component';
+import { UserdashboardComponent } from './pages/userdashboard/userdashboard.component';
 
 export const routes: Routes = [
 
@@ -20,5 +21,8 @@ export const routes: Routes = [
     },
     {
         path:'auth', component: AuthenticationComponent
-    }
+    },
+    {
+        path:'user', component: UserdashboardComponent
+    },
 ];
