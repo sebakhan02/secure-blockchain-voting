@@ -3,7 +3,6 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300">
     <div class="flex justify-between items-center">
 
-      <!-- Logo -->
       <a href="/" class="flex items-center space-x-2 transition-all duration-300">
         <img src="assets/logo.png"
              alt="Logo"
@@ -13,13 +12,11 @@
               class="font-semibold text-[#10497E] transition-all duration-300">eVOTING</span>
       </a>
 
-      <!-- Center Links -->
       <div class="hidden md:flex space-x-8">
         <a href="#home" class="text-[#10497E] hover:text-[#A41E22] transition font-bold">Home</a>
         <a href="#about" class="text-[#10497E] hover:text-[#A41E22] transition font-bold">About Us</a>
       </div>
 
-      <!-- Right Auth -->
       <div class="hidden md:flex items-center space-x-4">
         <a routerLink="/login" class="text-[#10497E] hover:text-[#A41E22] transition">Sign In</a>
         <a routerLink="/signup" class="px-4 py-2 bg-[#A41E22] text-white font-semibold rounded hover:bg-[#10497E] transition">
@@ -27,7 +24,6 @@
         </a>
       </div>
 
-      <!-- Mobile Button -->
       <div class="md:hidden flex items-center">
         <button (click)="toggleMobileMenu()" class="text-[#10497E] focus:outline-none">
           <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
@@ -39,7 +35,6 @@
     </div>
   </div>
 
-  <!-- Mobile Menu -->
   <div *ngIf="isMobileMenuOpen" class="md:hidden px-4 pb-4 space-y-2">
     <a href="#home" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold" >Home</a>
     <a href="#about" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold">About Us</a>
