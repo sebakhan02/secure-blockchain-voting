@@ -1,0 +1,41 @@
+<section class="relative w-full h-screen bg-cover bg-center bg-[#10497E]">
+    <div class="bg-[#10497E] py-6 flex items-center justify-center px-4">
+      <div class="max-w-md w-full bg-white/70 backdrop-blur-md rounded-2xl p-6 sm:p-10 shadow-xl text-center">
+        
+        <div class="flex justify-center mb-4">
+          <img src="assets/iaaherologo.png" alt="Logo" class="h-15 object-contain" />
+        </div>
+  
+        <h2 class="text-2xl sm:text-3xl font-bold text-center text-[#A41E22] mb-2">
+          Authenticate Your Account
+        </h2>
+        <p class="text-center text-[#10497E] mb-6">
+          Protecting your account is our top priority. Please confirm your account by entering the authorization code sent to your email.
+        </p>
+  
+        <div class="flex justify-between gap-2 mb-6">
+          <input *ngFor="let input of inputs; let i = index"
+                 type="text"
+                 maxlength="1"
+                 class="w-10 h-12 text-center text-black text-xl border-b-4 border-[#A41E22] bg-transparent focus:outline-none"
+                 #codeInput
+                 (input)="onInput($event, i)"
+                 [(ngModel)]="code[i]" />
+        </div>
+  
+        <button class="w-full bg-[#10497E] text-white py-2 rounded-md hover:bg-[#A41E22] transition">
+          Verify
+        </button>
+  
+        <p class="text-center text-sm text-[#10497E] mt-4">
+          It may take a minute to receive your code. Haven’t received it?
+          <a href="#" class="text-[#A41E22] underline hover:text-[#10497E] font-semibold">Resend a new code</a>
+        </p>
+  
+      </div>
+    </div>
+    <footer class="text-white text-center py-3 text-sm bg-[#10497E]/80 backdrop-blur-sm">
+      &copy; 2025 Secure Blockchain Voting. All Rights Reserved.
+    </footer>
+  </section>
+  

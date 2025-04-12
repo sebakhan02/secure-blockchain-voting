@@ -1,0 +1,43 @@
+<app-header></app-header>
+<section class="relative w-full h-screen bg-cover bg-center bg-[#10497E] ">
+    <div class=" bg-[#10497E] py-6 flex items-center justify-center px-4">
+      
+      <div class="max-w-md w-full bg-white/20 backdrop-blur-md rounded-2xl p-6 sm:p-10 shadow-xl text-center text-[#10497E]">
+        
+        <div class="flex justify-center mb-4">
+          <img src="assets/iaaherologo.png" alt="Logo" class="h-13 " />
+        </div>
+  
+        <h2 class="text-2xl font-bold text-white mb-6">Signin</h2>
+  
+        <form class="space-y-4 text-left">
+
+          <input type="email" placeholder="Email"
+                 class="w-full px-4 py-2 rounded shadow text-[#10497E] placeholder-[#10497E] bg-white focus:outline-none focus:ring-2 focus:ring-[#10497E]" />
+  
+          <input type="password" placeholder="Password"
+                 class="w-full px-4 py-2 rounded shadow text-[#10497E] placeholder-[#10497E] bg-white focus:outline-none focus:ring-2 focus:ring-[#10497E]" />
+
+            <p class="space-y-4 text-white">
+                    forgot password?
+                    <a routerLink="/signup" class="underline text-[#A41E22] hover:text-[#10497E] font-semibold">Recover</a>
+            </p>
+
+          <button type="submit"
+                  class="w-full bg-[#10497E] hover:bg-[#A41E22] text-white font-semibold py-2 rounded transition">
+            Signin
+          </button>
+        </form>
+  
+        <p class="mt-4 text-white">
+          New user?
+          <a routerLink="/signin" class="underline text-[#A41E22] hover:text-[#10497E] font-semibold">Sign up</a>
+        </p>
+  
+      </div>
+    </div>
+    <footer class="text-white text-center py-3 text-sm">
+        &copy; 2025 Secure Blockchain Voting. All Rights Reserved.
+    </footer>
+  </section>
+  
