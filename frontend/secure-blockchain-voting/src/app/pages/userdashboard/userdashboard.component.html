@@ -1,75 +1,134 @@
 <div class="flex h-screen bg-gray-100">
-    <!-- Sidebar -->
-    <div
-      [ngClass]="{ 'w-64': isSidebarOpen, 'w-20': !isSidebarOpen }"
-      class="bg-[#10497E] text-white transition-all duration-300 flex flex-col"
-    >
-      <div class="flex items-center justify-between px-4 py-4">
-        <img src="assets/iaaherologo.png" class="h-8" *ngIf="isSidebarOpen" />
-        <button (click)="toggleSidebar()" class=" text-2xl text-white focus:outline-none">
-            <span *ngIf="!isSidebarOpen"><i class="fa-solid fa-bars"></i></span> <!-- Hamburger -->
-            <span *ngIf="isSidebarOpen" class="text-[#FF0A0A]"><i class="fa-solid fa-circle-xmark"></i></span>  <!-- Close -->
-          </button>
-          
-      </div>
-      <nav class="flex-1">
-        <ul class="space-y-4 mt-6 text-sm">
-          <li class="flex items-center px-4 hover:bg-[#A41E22] cursor-pointer py-2">
+
+  <div
+    *ngIf="isSidebarOpen && isMobile"
+    class="fixed inset-0 bg-black opacity-40 z-30"
+    (click)="toggleSidebar()"
+  ></div>
+
+  <div
+    [ngClass]="{
+      'w-64': isSidebarOpen,
+      'w-20': !isSidebarOpen,
+      'hidden md:flex': !isSidebarOpen && isMobile
+    }"
+    class="text-white transition-all duration-300 flex flex-col fixed md:static z-40 h-full" style="background: linear-gradient(to right, #10497E 32%, #1B7EDB 100%);"
+  >
+    <div class="flex items-center justify-between px-4 py-4">
+      <img src="assets/iaaherologo.png" class="h-8" *ngIf="isSidebarOpen" />
+      <button (click)="toggleSidebar()" class="text-2xl focus:outline-none">
+        <span *ngIf="!isSidebarOpen"><i class="fa-solid fa-bars"></i></span>
+        <span *ngIf="isSidebarOpen" class="text-[#FF0A0A]"><i class="fa-solid fa-circle-xmark"></i></span>
+      </button>
+    </div>
+
+    <nav class="flex-1">
+      <ul class="space-y-4 mt-6 text-sm">
+
+        <li class="flex items-center px-4 cursor-pointer py-2">
+          <a
+            routerLink="/user/dashboard"
+            routerLinkActive="bg-[#A41E22] font-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center w-full"
+          >
             <i class="fa-solid fa-gauge"></i>
             <span *ngIf="isSidebarOpen" class="ml-2">Dashboard</span>
-          </li>
-          <li class="flex items-center px-4 hover:bg-[#A41E22] cursor-pointer py-2">
+          </a>
+        </li>
+      
+        <li class="flex items-center px-4 cursor-pointer py-2">
+          <a
+            routerLink="/user/registration"
+            routerLinkActive="bg-[#A41E22] font-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center w-full"
+          >
+            <i class="fa-solid fa-clipboard-check"></i>
+            <span *ngIf="isSidebarOpen" class="ml-2">Registration</span>
+          </a>
+        </li>
+      
+        <li class="flex items-center px-4 cursor-pointer py-2">
+          <a
+            routerLink="/user/vote"
+            routerLinkActive="bg-[#A41E22] font-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center w-full"
+          >
             <i class="fa-solid fa-check-to-slot"></i>
             <span *ngIf="isSidebarOpen" class="ml-2">Vote</span>
-          </li>
-          <li class="flex items-center px-4 hover:bg-[#A41E22] cursor-pointer py-2">
+          </a>
+        </li>
+      
+        <li class="flex items-center   px-4 cursor-pointer py-2">
+          <a
+            routerLink="/user/result"
+            routerLinkActive="bg-[#A41E22] font-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center w-full"
+          >
             <i class="fa-solid fa-square-poll-vertical"></i>
             <span *ngIf="isSidebarOpen" class="ml-2">Result</span>
-          </li>
-          <li class="flex items-center px-4 hover:bg-[#A41E22] cursor-pointer py-2">
+          </a>
+        </li>
+      
+        <li class="flex items-center px-4 cursor-pointer py-2">
+          <a
+            routerLink="/user/profile"
+            routerLinkActive="bg-[#A41E22] font-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center w-full"
+          >
             <i class="fas fa-user"></i>
             <span *ngIf="isSidebarOpen" class="ml-2">Profile</span>
-          </li>
-          <li class="flex items-center px-4 hover:bg-[#A41E22] cursor-pointer py-2">
+          </a>
+        </li>
+      
+        <li class="flex items-center px-4 cursor-pointer py-2">
+          <a
+            routerLink="/logout"
+            routerLinkActive="bg-[#A41E22] font-semibold"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="flex items-center w-full"
+          >
             <i class="fas fa-sign-out-alt"></i>
             <span *ngIf="isSidebarOpen" class="ml-2">Logout</span>
-          </li>
-        </ul>
-      </nav>
-    </div>
-  
-    <!-- Main Content -->
-    <div class="flex-1 flex flex-col">
-      <!-- Header -->
-      <header class="bg-white shadow p-4 flex justify-between items-center">
-        <img src="assets/iaaherologo.png" alt="Logo" class="h-8" />
-        <div class="flex items-center gap-4">
-          <a href="#" class="text-[#10497E] hover:text-[#A41E22]"><i class="fa-solid fa-bell"></i>Notifications</a>
-          <div class="relative">
-            <button (click)="toggleDropdown()" class="focus:outline-none text-[#10497E] flex items-center gap-2">
-              <i class="fa-solid fa-user"></i> Profile
-            </button>
-          
-            <div *ngIf="isDropdownOpen" class="absolute right-0 mt-2 bg-white text-sm rounded shadow w-40 z-50">
-              <a routerLink="/profile" class="block px-4 py-2 hover:bg-gray-100">Account Profile</a>
-              <a routerLink="/logout" class="block px-4 py-2 hover:bg-gray-100 text-red-500">Logout</a>
-            </div>
-          </div>
-          
-        </div>
-      </header>
-  
-      <!-- Dashboard Content -->
-      <main class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white shadow rounded p-4">
-          <h3 class="text-lg font-semibold text-[#10497E]">Voting Status</h3>
-          <p class="text-gray-600 mt-2">Check if you've already voted.</p>
-        </div>
-        <div class="bg-white shadow rounded p-4">
-          <h3 class="text-lg font-semibold text-[#10497E]">Upcoming Elections</h3>
-          <p class="text-gray-600 mt-2">View upcoming elections and deadlines.</p>
-        </div>
-      </main>
-    </div>
+          </a>
+        </li>     
+      </ul>         
+    </nav>
   </div>
-  
+
+  <div class="flex-1 flex flex-col transition-all duration-300" >
+
+    <header class="bg-white shadow p-4 flex justify-between items-center w-full">
+      <div class="flex items-center gap-4">
+        <button class="md:hidden text-2xl text-[#10497E]" (click)="toggleSidebar()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <img src="assets/iaaherologo.png" alt="Logo" class="h-8" />
+      </div>
+
+      <div class="flex items-center gap-4">
+        <a href="#" class="text-[#10497E] hover:text-[#A41E22]">
+          <i class="fa-solid fa-bell"></i> Notifications
+        </a>
+        <div class="relative"  #dropdownRef>
+          <button (click)="toggleDropdown()" class="focus:outline-none text-[#10497E] flex items-center gap-2">
+            <i class="fa-solid fa-user"></i> Profile
+          </button>
+
+          <div *ngIf="isDropdownOpen" class="absolute right-0 mt-2 bg-white text-sm rounded shadow w-40 z-50">
+            <a routerLink="/profile" class="block px-4 py-2 hover:bg-gray-100">Account Profile</a>
+            <a routerLink="/logout" class="block px-4 py-2 hover:bg-gray-100 text-red-500">Logout</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 p-6 bg-gray-200 overflow-y-auto">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

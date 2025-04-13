@@ -1,0 +1,137 @@
+<div class="p-6 space-y-10">
+
+    <!-- Election Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-white shadow rounded p-4">
+        <h3 class="text-lg font-bold text-[#10497E]">S/No: 1</h3>
+        <p class="text-[#10497E] font-semibold mt-1">Title: 2025 Student Union Election</p>
+        <p class="text-sm text-gray-600 mt-1">Positions: 2</p>
+        <button class="mt-4 bg-[#10497E] hover:bg-[#A41E22] text-white px-4 py-2 rounded"
+                (click)="toggleDetails(1)">
+          {{ isExpanded(1) ? 'Hide' : 'View' }}
+        </button>
+      </div>
+  
+      <div class="bg-white shadow rounded p-4">
+        <h3 class="text-lg font-bold text-[#10497E]">S/No: 2</h3>
+        <p class="text-[#10497E] font-semibold mt-1">Title: Engineering Dept Rep</p>
+        <p class="text-sm text-gray-600 mt-1">Positions: 1</p>
+        <button class="mt-4 bg-[#10497E] hover:bg-[#A41E22] text-white px-4 py-2 rounded"
+                (click)="toggleDetails(2)">
+          {{ isExpanded(2) ? 'Hide' : 'View' }}
+        </button>
+      </div>
+    </div>
+  
+    <div *ngIf="isExpanded(1)" [@expandCollapse] class="bg-white rounded shadow p-6 space-y-6">
+        <h2 class="text-2xl font-bold text-[#10497E] mb-4">2025 Student Union Election</h2>
+      
+        <!-- President Card -->
+        <div class="bg-gray-50 rounded shadow p-4">
+          <div class="grid grid-cols-4 gap-4">
+            <!-- S/No and Position -->
+            <div>
+              <div class="text-sm font-semibold text-[#1B7EDB]">S/No: 1</div>
+              <div class="font-bold text-[#10497E]">President</div>
+            </div>
+      
+            <!-- Winner -->
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Winner</div>
+              <div class="text-green-600 font-medium">John Doe</div>
+            </div>
+      
+            <!-- Candidates -->
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Candidates</div>
+              <ul class="space-y-1 text-sm">
+                <li>John Doe</li>
+                <li>Jane Smith</li>
+              </ul>
+            </div>
+      
+            <!-- Votes -->
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Votes</div>
+              <ul class="space-y-1 text-sm">
+                <li>230</li>
+                <li>180</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Vice President Card -->
+        <div class="bg-gray-50 rounded shadow p-4">
+          <div class="grid grid-cols-4 gap-4">
+            <div>
+              <div class="text-sm font-semibold text-[#1B7EDB]">S/No: 2</div>
+              <div class="font-bold text-[#10497E]">Vice President</div>
+            </div>
+      
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Winner</div>
+              <div class="text-green-600 font-medium">Alice Brown</div>
+            </div>
+      
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Candidates</div>
+              <ul class="space-y-1 text-sm">
+                <li>Alice Brown</li>
+                <li>Tom Jerry</li>
+              </ul>
+            </div>
+      
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Votes</div>
+              <ul class="space-y-1 text-sm">
+                <li>250</li>
+                <li>150</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="isExpanded(2)" [@expandCollapse] class="bg-white rounded shadow p-6 space-y-6">
+        <h2 class="text-2xl font-bold text-[#10497E] mb-4">Engineering Department Rep Election</h2>
+      
+        <!-- Department Rep Card -->
+        <div class="bg-gray-50 rounded shadow p-4">
+          <div class="grid grid-cols-4 gap-4">
+            <!-- S/No and Position -->
+            <div>
+              <div class="text-sm font-semibold text-[#1B7EDB]">S/No: 1</div>
+              <div class="font-bold text-[#10497E]">Department Rep</div>
+            </div>
+      
+            <!-- Winner -->
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Winner</div>
+              <div class="text-green-600 font-medium">Kelvin Bolt</div>
+            </div>
+      
+            <!-- Candidates -->
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Candidates</div>
+              <ul class="space-y-1 text-sm">
+                <li>Kelvin Bolt</li>
+                <li>Martin Zino</li>
+              </ul>
+            </div>
+      
+            <!-- Votes -->
+            <div>
+              <div class="text-sm font-semibold text-[#10497E]">Votes</div>
+              <ul class="space-y-1 text-sm">
+                <li>120</li>
+                <li>98</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+  </div>
+  
