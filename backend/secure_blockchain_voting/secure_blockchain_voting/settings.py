@@ -106,7 +106,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'secure_blockchain_voting',
         'USER': 'postgres',
-        'PASSWORD': 'sebaniteD4',
+        'PASSWORD': '.......',
         'HOST': 'localhost',
         'PORT': '5432',
     }
