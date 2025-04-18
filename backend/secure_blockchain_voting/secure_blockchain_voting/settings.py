@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,11 +92,11 @@ AUTHENTICATION_BACKENDS = (
 
 #email backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_HOST = 'your_smtp_server'  
+EMAIL_PORT = 'your_smtp_port'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'sebaila360@gmail.com'         # <-- use your Gmail
-EMAIL_HOST_PASSWORD = 'snam lyyi zlkb qual'        # <-- not your Gmail password!
+EMAIL_HOST_USER = 'yourgmail@gmail.com'         # <-- use your Gmail
+EMAIL_HOST_PASSWORD = '*******'        # <-- not your Gmail password!
 
 
 # Database
@@ -106,7 +107,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'secure_blockchain_voting',
         'USER': 'postgres',
-        'PASSWORD': 'sebaniteD4',
+        'PASSWORD': '******',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -154,3 +155,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(hours=1),  # Access token expires in 1 hour
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=3),   # Refresh token expires in 7 days
+    'ROTATE_REFRESH_TOKENS': True,
+    'BLACKLIST_AFTER_ROTATION': True,
+}

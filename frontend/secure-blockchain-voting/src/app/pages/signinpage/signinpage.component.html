@@ -10,28 +10,42 @@
   
         <h2 class="text-2xl font-bold text-white mb-6">Signin</h2>
   
-        <form class="space-y-4 text-left">
+        <form class="space-y-4 text-left" (ngSubmit)="onSubmit()" #signinForm="ngForm">
 
-          <input type="email" placeholder="Email"
+          <!-- Email -->
+          <input type="email"
+                 name="email"
+                 [(ngModel)]="email"
+                 required
+                 placeholder="Email"
                  class="w-full px-4 py-2 rounded shadow text-[#10497E] placeholder-[#10497E] bg-white focus:outline-none focus:ring-2 focus:ring-[#10497E]" />
-  
-          <input type="password" placeholder="Password"
+        
+          <!-- Password -->
+          <input type="password"
+                 name="password"
+                 [(ngModel)]="password"
+                 required
+                 placeholder="Password"
                  class="w-full px-4 py-2 rounded shadow text-[#10497E] placeholder-[#10497E] bg-white focus:outline-none focus:ring-2 focus:ring-[#10497E]" />
-
-            <p class="space-y-4 text-white">
-                    forgot password?
-                    <a routerLink="/signup" class="underline text-[#A41E22] hover:text-[#10497E] font-semibold">Recover</a>
-            </p>
-
+        
+          <!-- Forgot password link -->
+          <p class="space-y-4 text-white">
+            Forgot password?
+            <a routerLink="/signup" class="underline text-[#A41E22] hover:text-[#10497E] font-semibold">Recover</a>
+          </p>
+        
+          <!-- Submit Button -->
           <button type="submit"
+                  [disabled]="loading || !signinForm.form.valid"
                   class="w-full bg-[#10497E] hover:bg-[#A41E22] text-white font-semibold py-2 rounded transition">
-            Signin
+            {{ loading ? 'Signing in...' : 'Signin' }}
           </button>
         </form>
+        
   
         <p class="mt-4 text-white">
           New user?
-          <a routerLink="/signin" class="underline text-[#A41E22] hover:text-[#10497E] font-semibold">Sign up</a>
+          <a (click)="goToSignup()" class="underline text-[#A41E22] hover:text-[#10497E] font-semibold cursor-pointer ">Sign up</a>
         </p>
   
       </div>

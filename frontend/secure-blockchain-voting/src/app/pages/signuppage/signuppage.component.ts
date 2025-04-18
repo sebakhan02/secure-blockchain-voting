@@ -43,6 +43,9 @@ export class SignuppageComponent {
     const confirm = form.get('confirmPassword')?.value;
     return password === confirm ? null : { passwordMismatch: true };
   }
+  goToSignin() {
+    this.router.navigate(['/signin']);
+  }
 
   loading = false;
 
@@ -52,7 +55,7 @@ export class SignuppageComponent {
       const sanitizedData = this.sanitize(this.signupForm.value);
   
       // Send data to backend
-      fetch('http://localhost:8000/register/', {
+      fetch('http://localhost:8000/auth/register/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

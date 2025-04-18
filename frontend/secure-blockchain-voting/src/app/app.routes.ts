@@ -9,6 +9,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ResultComponent } from './pages/result/result.component';
 import { VoteComponent } from './pages/vote/vote.component';
+import { authGuard } from './pages/auth.guard';
 
 export const routes: Routes = [
 
@@ -19,19 +20,19 @@ export const routes: Routes = [
         path: 'landingpage', component: LandingpageComponent
     },
     {
-        path:'signup', component: SignuppageComponent
+        path:'signup', component: SignuppageComponent, canActivate: [authGuard]
     },
     {
-        path:'signin', component: SigninpageComponent
+        path:'signin', component: SigninpageComponent, canActivate: [authGuard]
     },
     {
-        path:'auth', component: AuthenticationComponent
+        path:'auth', component: AuthenticationComponent,canActivate: [authGuard]
     },
 
     {
         path: 'user', 
+        canActivate: [authGuard],
         component: UserdashboardComponent,
-        // canActivate: [AuthGuard], // Uncomment this line if you want to protect the user dashboard route     
         children: [
           { path: '', redirectTo: 'vote', pathMatch: 'full' },
           { path: 'dashboard', component: DashboardComponent },
@@ -41,5 +42,5 @@ export const routes: Routes = [
           { path: 'profile', component: ProfileComponent },
         ]
       },
-      { path: '**', redirectTo: 'landingpage' }
+      { path: '**', redirectTo: 'signin' }
 ];

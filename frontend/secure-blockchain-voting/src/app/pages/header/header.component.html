@@ -13,8 +13,8 @@
       </a>
 
       <div class="hidden md:flex space-x-8">
-        <a href="#home" class="text-[#10497E] hover:text-[#A41E22] transition font-bold">Home</a>
-        <a href="#about" class="text-[#10497E] hover:text-[#A41E22] transition font-bold">About Us</a>
+        <a [routerLink]="['/']" fragment="about" class="text-[#10497E] hover:text-[#A41E22] transition font-bold">Home</a>
+        <a [routerLink]="['/']" fragment="about" class="text-[#10497E] hover:text-[#A41E22] transition font-bold">About Us</a>
       </div>
 
       <div class="hidden md:flex items-center space-x-4">
@@ -36,8 +36,8 @@
   </div>
 
   <div *ngIf="isMobileMenuOpen" class="md:hidden px-4 pb-4 space-y-2">
-    <a href="#home" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold" >Home</a>
-    <a href="#about" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold">About Us</a>
+    <a [routerLink]="['/']" fragment="landingpage" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold" >Home</a>
+    <a [routerLink]="['/']" fragment="about" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold">About Us</a>
     <a routerLink="/login" class="block text-[#10497E] hover:text-[#A41E22] transition font-bold">Sign In</a>
     <a routerLink="/signup" class="inline-block px-3 py-1.5 text-sm bg-[#A41E22] text-white font-bold rounded-md hover:bg-[#10497E] transition text-center">
       Sign Up

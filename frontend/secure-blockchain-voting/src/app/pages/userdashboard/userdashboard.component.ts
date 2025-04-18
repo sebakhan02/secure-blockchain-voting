@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from  '../../services/auth.service';
 
 @Component({
   selector: 'app-userdashboard',
@@ -11,6 +12,7 @@ import { RouterModule } from '@angular/router';
 })
 export class UserdashboardComponent {
 
+  constructor(private authService: AuthService) { }
   isSidebarOpen = false;
 
   toggleSidebar() {
@@ -45,6 +47,8 @@ checkScreenSize() {
     this.isSidebarOpen = false;
   }
 }
-
+logout() {
+  this.authService.logout();
+}
   
 }

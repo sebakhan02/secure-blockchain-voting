@@ -3,8 +3,7 @@ from django.core.validators import RegexValidator, MinLengthValidator, MaxLength
 from django.db import models
 from django.core.exceptions import ValidationError
 import re
-
-import uuid
+import random
 from django.utils import timezone
 from datetime import timedelta
 from django.conf import settings
@@ -43,12 +42,12 @@ class CustomUserManager(BaseUserManager):
             course=course
         )
         user.set_password(password)
-        user.full_clean()  # Validate model fields
+        user.full_clean()  
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, full_name, reg_number, course, password):
-        user = self.create_user(email, full_name, reg_number, course, password)
+    def create_superuser(self, email, password):
+        user = self.create_user(email, password)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -66,7 +65,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         validators=[reg_number_validator]
     )
     course = models.CharField(
-        max_length=50,
+        max_length=7,
         validators=[MaxLengthValidator(50, message="Course name is too long.")]
     )
     is_active = models.BooleanField(default=False)
@@ -81,26 +80,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-def expiry_30_minutes_from_now():
-    return timezone.now() + timedelta(minutes=30)
+def expiry_5_minutes_from_now():
+    return timezone.now() + timedelta(minutes=5)
 
-# class VerificationToken(models.Model):
-#     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-#     token = models.UUIDField(default=uuid.uuid4, unique=True)
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     expires_at = models.DateTimeField(default=expiry_30_minutes_from_now)
-#     is_used = models.BooleanField(default=False)
-
-#     def is_valid(self):
-#         return timezone.now() < self.expires_at and not self.is_used
-
-import random
 
 class VerificationToken(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     code = models.CharField(max_length=6)
     created_at = models.DateTimeField(auto_now_add=True)
-    expires_at = models.DateTimeField(default=expiry_30_minutes_from_now)
+    expires_at = models.DateTimeField(default=expiry_5_minutes_from_now)
     is_used = models.BooleanField(default=False)
 
     def is_valid(self):

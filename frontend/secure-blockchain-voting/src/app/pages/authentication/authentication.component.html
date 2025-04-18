@@ -34,7 +34,10 @@
       <!-- Resend code -->
       <p class="text-center text-sm text-[#10497E] mt-4">
         It may take a minute to receive your code. Haven’t received it?
-        <a href="#" class="text-[#A41E22] underline hover:text-[#10497E] font-semibold">Resend a new code</a>
+        <a  (click)="resendCode()" class="text-[#A41E22] underline hover:text-[#10497E] font-semibold cursor-pointer">
+          Resend new code
+        </a>
+        
       </p>
 
     </div>

@@ -69,24 +69,48 @@ export class AuthenticationComponent {
   // Handle the verification of the code entered by the user
   onVerify(): void {
     const fullCode = this.code.join('');
-
+  
     if (fullCode.length !== 6) {
       this.toast.show('Please enter the full 6-digit code.', 'error');
       return;
     }
-
-    this.http.post('http://localhost:8000/verify-code/', {
+  
+    this.http.post('http://localhost:8000/auth/verify/', {
       email: this.email,
       code: fullCode
     }).subscribe({
-      next: () => {
-        this.toast.show('Email verified successfully!', 'success');
-        this.router.navigate(['/signin']);
+      next: (res: any) => {
+        this.toast.show('Verified successfully!', 'success');
+  
+        if (res.access) {
+          // Login: store JWT and go to dashboard
+          localStorage.setItem('access_token', res.access);
+          this.router.navigate(['/user/dashboard']);
+        } else {
+          // Signup: redirect to login page
+          this.router.navigate(['/signin']);
+        }
       },
       error: (err) => {
-        const msg = err.error?.error || 'Verification failed. Please try again.';
+        const msg = err.error?.error || 'Verification failed.';
         this.toast.show(msg, 'error');
       }
     });
+  }  
+  
+  resendCode() {
+    if (!this.email) {
+      this.toast.show('Email not found. Please log in again.', 'error');
+      return;
+    }
+  
+    this.http.post('http://localhost:8000/auth/resend-code/', {
+      email: this.email
+    }).subscribe({
+      next: () => this.toast.show('Verification code resent.', 'success'),
+      error: () => this.toast.show('Error resending code.', 'error')
+    });
   }
+  
+  
 }
