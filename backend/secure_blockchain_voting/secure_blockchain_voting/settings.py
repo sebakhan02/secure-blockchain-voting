@@ -92,19 +92,11 @@ AUTHENTICATION_BACKENDS = (
 
 #email backend
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-<<<<<<< HEAD
 EMAIL_HOST = 'your_smtp_server'  
 EMAIL_PORT = 'your_smtp_port'
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'yourgmail@gmail.com'         # <-- use your Gmail
 EMAIL_HOST_PASSWORD = '*******'        # <-- not your Gmail password!
-=======
-EMAIL_HOST = 'urhost'
-EMAIL_PORT = 'urport'
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'urgmail@gmail.com'         # <-- use your Gmail
-EMAIL_HOST_PASSWORD = 'gmail app paswd'        # <-- not your Gmail password!
->>>>>>> b68eec54092f04436974f10565b96703220abf3c
 
 
 # Database
